@@ -14,19 +14,7 @@ import { Transactor } from "./helpers";
 import { parseEther, formatEther } from "@ethersproject/units";
 //import Hints from "./Hints";
 import { Hints, ExampleUI, Subgraph } from "./views"
-/*
-    Welcome to 🏗 scaffold-eth !
 
-    Code:
-    https://github.com/austintgriffith/scaffold-eth
-
-    Support:
-    https://t.me/joinchat/KByvmRe5wkR-8F_zz6AjpA
-    or DM @austingriffith on twitter or telegram
-
-    You should get your own Infura.io ID and put it in `constants.js`
-    (this is your connection to the main Ethereum network for ENS etc.)
-*/
 import { INFURA_ID, ETHERSCAN_KEY } from "./constants";
 const { TabPane } = Tabs;
 
@@ -113,24 +101,19 @@ function App(props) {
           <Menu.Item key="/">
             <Link onClick={()=>{setRoute("/")}} to="/">YourContract</Link>
           </Menu.Item>
-          <Menu.Item key="/hints">
-            <Link onClick={()=>{setRoute("/hints")}} to="/hints">Hints</Link>
+          <Menu.Item key="/UniswapV2ERC20">
+            <Link onClick={()=>{setRoute("/UniswapV2ERC20")}} to="/UniswapV2ERC20">UniswapV2ERC20</Link>
           </Menu.Item>
-          <Menu.Item key="/exampleui">
-            <Link onClick={()=>{setRoute("/exampleui")}} to="/exampleui">ExampleUI</Link>
+          <Menu.Item key="/UniswapV2Factory">
+            <Link onClick={()=>{setRoute("/UniswapV2Factory")}} to="/UniswapV2Factory">UniswapV2Factory</Link>
           </Menu.Item>
-          <Menu.Item key="/subgraph">
-            <Link onClick={()=>{setRoute("/subgraph")}} to="/subgraph">Subgraph</Link>
+          <Menu.Item key="/UniswapV2Pair">
+            <Link onClick={()=>{setRoute("/UniswapV2Pair")}} to="/UniswapV2Pair">UniswapV2Pair</Link>
           </Menu.Item>
         </Menu>
 
         <Switch>
           <Route exact path="/">
-            {/*
-                🎛 this scaffolding is full of commonly used components
-                this <Contract/> component will automatically parse your ABI
-                and give you a form to interact with it locally
-            */}
             <Contract
               name="YourContract"
               signer={userProvider.getSigner()}
@@ -139,33 +122,31 @@ function App(props) {
               blockExplorer={blockExplorer}
             />
           </Route>
-          <Route path="/hints">
-            <Hints
+          <Route exact path="/UniswapV2ERC20">
+            <Contract
+              name="UniswapV2ERC20"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
               address={address}
-              yourLocalBalance={yourLocalBalance}
-              mainnetProvider={mainnetProvider}
-              price={price}
+              blockExplorer={blockExplorer}
             />
           </Route>
-          <Route path="/exampleui">
-            <ExampleUI
+          <Route exact path="/UniswapV2Factory">
+            <Contract
+              name="UniswapV2Factory"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
               address={address}
-              userProvider={userProvider}
-              mainnetProvider={mainnetProvider}
-              localProvider={localProvider}
-              yourLocalBalance={yourLocalBalance}
-              price={price}
-              tx={tx}
-              writeContracts={writeContracts}
-              readContracts={readContracts}
+              blockExplorer={blockExplorer}
             />
           </Route>
-          <Route path="/subgraph">
-            <Subgraph
-            subgraphUri={props.subgraphUri}
-            tx={tx}
-            writeContracts={writeContracts}
-            mainnetProvider={mainnetProvider}
+          <Route exact path="/UniswapV2Pair">
+            <Contract
+              name="UniswapV2Pair"
+              signer={userProvider.getSigner()}
+              provider={localProvider}
+              address={address}
+              blockExplorer={blockExplorer}
             />
           </Route>
         </Switch>

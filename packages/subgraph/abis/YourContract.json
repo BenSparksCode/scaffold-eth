@@ -1,6 +1,7 @@
 [
   {
     "inputs": [],
+    "payable": false,
     "stateMutability": "nonpayable",
     "type": "constructor"
   },
@@ -24,6 +25,7 @@
     "type": "event"
   },
   {
+    "constant": true,
     "inputs": [],
     "name": "purpose",
     "outputs": [
@@ -33,10 +35,12 @@
         "type": "string"
       }
     ],
+    "payable": false,
     "stateMutability": "view",
     "type": "function"
   },
   {
+    "constant": false,
     "inputs": [
       {
         "internalType": "string",
@@ -46,6 +50,7 @@
     ],
     "name": "setPurpose",
     "outputs": [],
+    "payable": false,
     "stateMutability": "nonpayable",
     "type": "function"
   }

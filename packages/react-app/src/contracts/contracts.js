@@ -1,1 +1,1 @@
-module.exports = ["YourContract"];
+module.exports = ["UniswapV2ERC20","UniswapV2Factory","UniswapV2Pair","YourContract"];
